@@ -16,6 +16,20 @@ describe ContentSecurityPolicy do
     end
   end
 
+  describe 'base-uri' do
+    it 'does not allow base to be set' do
+      base_uri = parse(policy)['base-uri']
+      expect(base_uri).to eq(["'none'"])
+    end
+  end
+
+  describe 'object-src' do
+    it 'does not allow objects' do
+      object_srcs = parse(policy)['object-src']
+      expect(object_srcs).to eq(["'none'"])
+    end
+  end
+
   describe 'worker-src' do
     it 'always has self and blob' do
       worker_srcs = parse(policy)['worker-src']
